@@ -70,6 +70,58 @@ int *findTwoElement(int *arr, int n)
 }
 */
 
+// USING XOR
+// Time Complexity: O(N)
+// Space Complexity: O(1)
+
+int *findTwoElement(int *arr, int n)
+{
+    int *output = new int[2]();
+
+    int ans = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        ans ^= arr[i];
+        ans ^= i + 1;
+    }
+
+    int temp1 = 0;
+    int temp2 = 0;
+
+    int rightSetBit = ans & ~(ans - 1);
+
+    for (int i = 0; i < n; i++)
+    {
+        // for array's ith elements
+        if (rightSetBit & arr[i])
+            temp1 ^= arr[i];
+        else
+            temp2 ^= arr[i];
+
+        // for number i
+        if (rightSetBit & (i + 1))
+            temp1 ^= (i + 1);
+        else
+            temp2 ^= (i + 1);
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        if (temp1 == arr[i])
+        {
+            output[0] = temp1;
+            output[1] = temp2;
+            return output;
+        }
+    }
+
+    output[0] = temp2;
+    output[1] = temp1;
+
+    return output;
+}
+
 int main()
 {
     int n;

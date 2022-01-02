@@ -1,4 +1,5 @@
 // Question : https://practice.geeksforgeeks.org/problems/find-missing-and-repeating2512/1/
+// Solution : https://practice.geeksforgeeks.org/viewSol.php?subId=f2ec6d64887e20aa69bb1f54b4e3f0b1&pid=702678&user=rohitxofficial
 
 #include <bits/stdc++.h>
 using namespace std;
